@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.side-round-div {
+  position: absolute;
+  width: 250px;
+  height: 1024px;
+  left: 250px;
+  top: 0px;
+  background: rgba(237, 237, 237, 0.31);
+   border-radius: 0% 50% 50% 0%;
+}
+
+.side-round-div-2 {
+  position: absolute;
+  width: 250px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+  background: rgba(237, 237, 237, 0.31);}
+
+.data-div {
+  position: absolute;
+  width: 200px;
+  height: 124px;
+  left: 130px;
+  top: 285px;
+  background: rgba(233, 255, 108, 0.466);
+  border-radius: 9px;
+}
