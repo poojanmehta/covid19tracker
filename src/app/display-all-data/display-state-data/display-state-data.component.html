@@ -1,0 +1,79 @@
+<mat-spinner *ngIf="isSpin" class="spinner"></mat-spinner>
+<div [hidden]="isSpin">
+  <p class="heading-text">{{state}}</p>
+  <p class="small-info">Last Updated on {{lastDate.getDate()}}/{{lastDate.getMonth()}}/{{lastDate.getFullYear()}}</p>
+  <div class="data-div-active">
+    <p class="info-active case-info">
+      Active
+    </p>
+    <p class="info-active number-info">
+      {{covidStateData.active}}
+    </p>
+  </div>
+
+  <div class="data-div-recovered">
+    <p class="info-recovered case-info">
+      Recovered
+    </p>
+    <p class="info-recovered number-info">
+      {{covidStateData.recovered}}
+    </p>
+  </div>
+
+  <div class="data-div-deceased">
+    <p class="info-deceased case-info">
+      Deceased
+    </p>
+    <p class="info-deceased number-info">
+      {{covidStateData.deaths}}
+    </p>
+  </div>
+
+  <div class="covid-table">
+
+    <mat-form-field>
+      <mat-label>Search your state</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="ex Gujarat" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="district">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+          <td mat-cell *matCellDef="let row"> {{row.district}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="active">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
+          <td mat-cell *matCellDef="let row" [style.color]="activeColor"> {{row.active}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="recovered">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Recovered </th>
+          <td mat-cell *matCellDef="let row" [style.color]="recoveredColor"> {{row.recovered}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deceased">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Deceased </th>
+          <td mat-cell *matCellDef="let row" [style.color]="deathsColor"> {{row.deceased}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="increament">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Increament </th>
+          <td mat-cell *matCellDef="let row"> {{row.delta.confirmed}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+          <td mat-cell *matCellDef="let row"> {{row.confirmed}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[13, 10, covidDistrictData.length]"></mat-paginator>
+    </div>
+  </div>
+</div>

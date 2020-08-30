@@ -1,1 +1,82 @@
-<p>display-all-data works!</p>
+<mat-spinner *ngIf="isSpin"></mat-spinner>
+<p class="heading-text">india</p>
+<p class="small-info">Last Updated on {{lastDate.getDate()}}/{{lastDate.getMonth()}}/{{lastDate.getFullYear()}}</p>
+<div class="data-div-active">
+  <p class="info-active case-info">
+    Active
+  </p>
+  <p class="info-active number-info">
+    {{covidStateData.active}}
+  </p>
+</div>
+
+<div class="data-div-recovered">
+  <p class="info-recovered case-info">
+    Recovered
+  </p>
+  <p class="info-recovered number-info">
+    {{covidStateData.recovered}}
+  </p>
+</div>
+
+<div class="data-div-deceased">
+  <p class="info-deceased case-info">
+    Deceased
+  </p>
+  <p class="info-deceased number-info">
+    {{covidStateData.deaths}}
+  </p>
+</div>
+
+<div class="covid-table">
+
+  <mat-form-field>
+    <mat-label>Search your state</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="ex Gujarat" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+        <td mat-cell *matCellDef="let row"> {{row.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
+        <td mat-cell *matCellDef="let row" [style.color]="activeColor"> {{row.active}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="recovered">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Recovered </th>
+        <td mat-cell *matCellDef="let row" [style.color]="recoveredColor"> {{row.recovered}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="deceased">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Deceased </th>
+        <td mat-cell *matCellDef="let row" [style.color]="deathsColor"> {{row.deaths}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="increament">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Increament </th>
+        <td mat-cell *matCellDef="let row"> {{row.deltaconfirmed}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+        <td mat-cell *matCellDef="let row"> {{row.confirmed}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openStateData(row)"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr> -->
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[13, 20, 30, 38]"></mat-paginator>
+  </div>
+</div>

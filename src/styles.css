@@ -12,27 +12,135 @@ body {
 .side-round-div {
   position: absolute;
   width: 250px;
-  height: 1024px;
+  height: 1000px;
   left: 250px;
   top: 0px;
-  background: rgba(237, 237, 237, 0.31);
-   border-radius: 0% 50% 50% 0%;
+  background: rgba(245, 241, 241, 0.31);
+  border-radius: 0% 50% 50% 0%;
+  z-index: -1;
+
 }
 
 .side-round-div-2 {
   position: absolute;
   width: 250px;
-  height: 1024px;
+  height: 1000px;
   left: 0px;
   top: 0px;
-  background: rgba(237, 237, 237, 0.31);}
+  background: rgba(245, 241, 241, 0.31);
+  z-index: -2;
+}
 
-.data-div {
+.data-div-active {
   position: absolute;
   width: 200px;
   height: 124px;
   left: 130px;
-  top: 285px;
-  background: rgba(233, 255, 108, 0.466);
+  top: 200px;
+  background: rgba(255, 49, 49, 0.212);
   border-radius: 9px;
+  box-shadow: 0.5px 0.5px 3px rgb(216, 211, 211);
+}
+
+.data-div-recovered {
+  position: absolute;
+  width: 200px;
+  height: 124px;
+  left: 130px;
+  top: 350px;
+  background: rgba(57, 255, 31, 0.301);
+  border-radius: 9px;
+  box-shadow: 0.5px 0.5px 3px rgb(216, 211, 211);
+}
+
+.data-div-deceased {
+  position: absolute;
+  width: 200px;
+  height: 124px;
+  left: 130px;
+  top: 500px;
+  background: rgba(255, 251, 27, 0.561);
+  border-radius: 9px;
+  box-shadow: 0.5px 0.5px 3px rgb(216, 211, 211);
+}
+/*
+::ng-deep .mat-headline {
+  font-weight: bold;
+  text-transform: uppercase;
+} */
+.heading-area {
+  left: 130px;
+}
+
+.info-active {
+  color: rgb(37, 5, 5);
+  font-weight: 550;
+  font-size: larger;
+}
+
+.info-recovered {
+  color: rgb(9, 37, 5);
+  font-weight: 550;
+  font-size: larger;
+}
+
+.info-deceased {
+  color: rgb(37, 37, 5);
+  font-weight: 550;
+  font-size: larger;
+}
+
+.number-info {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.case-info {
+  padding-top: 25px;
+  text-align: center;
+}
+
+.covid-table {
+  height: 65%;
+  width: 60%;
+  margin-top: -20px;
+  margin-left: 550px;
+}
+
+.small-info {
+  padding-left: 128px;
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: medium;
+}
+
+.heading-text {
+  padding-top: 70px;
+  padding-left: 125px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-size: 65px;
+  height: auto;
+  margin-top: auto;
+  font-weight: 400;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 20%;
+  cursor: pointer;
+}
+
+.spinner {
+  align-self: center;
+  margin-left: 50%;
+  margin-top: 500px;
 }
