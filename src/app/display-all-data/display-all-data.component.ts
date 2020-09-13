@@ -22,6 +22,9 @@ export class DisplayAllDataComponent implements OnInit {
   lastDate: Date;
   isSpin = false;
   passStateData: any;
+  indiaActive = 0;
+  indiaRecovered = 0;
+  indiaDeceased = 0;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -38,6 +41,14 @@ export class DisplayAllDataComponent implements OnInit {
         this.dataSource.data = this.covidData;
         this.dataSource.paginator = this.paginator;
         this.covidStateData = this.covidData[0];
+
+        // Total numbers
+        for (const item of this.covidData) {
+          this.indiaActive += +item.active;
+          this.indiaRecovered += +item.recovered;
+          this.indiaDeceased += +item.deaths;
+        }
+
         this.createDate();
         this.isSpin = false;
       }
